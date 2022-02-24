@@ -17,6 +17,7 @@ const yTooltipOffset = 15;
 
 
 // TODO: What does this code do? 
+//Finds the element on our page via select then adds an SVG and then just sets width and height
 const svg1 = d3
   .select("#hard-coded-bar")
   .append("svg")
@@ -42,26 +43,31 @@ const data1 = [
 */ 
 
 // TODO: What does this code do? 
+//Looks at the score column in data1 and pulls out the maximum
 let maxY1 = d3.max(data1, function(d) { return d.score; });
 
-// TODO: What does each line of this code do?   
+// TODO: What does each line of this code do? 
+//Sets up the y-axis scale that takes us data values to pixel values  
 let yScale1 = d3.scaleLinear()
             .domain([0,maxY1])
             .range([height-margin.bottom,margin.top]); 
 
 // TODO: What does each line of this code do? 
+//Sets up the x-axis scale that takes us from data values to pixel values
 let xScale1 = d3.scaleBand()
             .domain(d3.range(data1.length))
             .range([margin.left, width - margin.right])
             .padding(0.1); 
 
 // TODO: What does each line of this code do?  
+//This adds the an y axis by appending a generic svg and they translate into the spot we want and then get y-axis a scale.
 svg1.append("g")
    .attr("transform", `translate(${margin.left}, 0)`) 
    .call(d3.axisLeft(yScale1)) 
    .attr("font-size", '20px'); 
 
-// TODO: What does each line of this code do? 
+// TODO: What does each line of this code do? ]
+//This adds the an x axis by appending a generic svg and they translate into the spot we want and then get x-axis a scale.
 svg1.append("g")
     .attr("transform", `translate(0,${height - margin.bottom})`) 
     .call(d3.axisBottom(xScale1) 
