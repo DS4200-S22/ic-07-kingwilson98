@@ -81,6 +81,7 @@ svg1.append("g")
 */
 
 // TODO: What does each line of this code do? 
+// selecting hard-coded bar and appending this div made in index.html.  Then it gives it 0 opacity.
 const tooltip1 = d3.select("#hard-coded-bar") 
                 .append("div") 
                 .attr('id', "tooltip1") 
@@ -88,18 +89,22 @@ const tooltip1 = d3.select("#hard-coded-bar")
                 .attr("class", "tooltip"); 
 
 // TODO: What does each line of this code do?  
+//When the mouse goes over a certain bar it shows the name and score of the bar that the user is hovering over.  
+//Also changes the opacity from 0 to 1
 const mouseover1 = function(event, d) {
   tooltip1.html("Name: " + d.name + "<br> Score: " + d.score + "<br>") 
           .style("opacity", 1);  
 }
 
 // TODO: What does each line of this code do? 
+//Set the position to be equal to event x and event y.
 const mousemove1 = function(event, d) {
   tooltip1.style("left", (event.x)+"px") 
           .style("top", (event.y + yTooltipOffset) +"px"); 
 }
 
 // TODO: What does this code do? 
+//Sets the opacity to 0, so that the user cannot see the visuals anymore
 const mouseleave1 = function(event, d) { 
   tooltip1.style("opacity", 0); 
 }
@@ -111,6 +116,7 @@ const mouseleave1 = function(event, d) {
 */
 
 // TODO: What does each line of this code do? 
+//Selects anything with the class bar
 svg1.selectAll(".bar") 
    .data(data1) 
    .enter()  
